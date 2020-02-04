@@ -13,6 +13,7 @@ import { MaterialModule } from './material.module';
 import { RoutingModule } from './routing.module';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './navigation/header/header.component';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 /* import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './navigation/header/header.component';
@@ -25,6 +26,7 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     AppComponent,
     HomeComponent,
     HeaderComponent,
+    SidenavListComponent,
     /* HomeComponent,
     LoginComponent,
     HeaderComponent,
