@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 //dum: componentes generados.
 import { RoutingModule } from './routing.module';
+import { HomeComponent } from './home/home.component';
 /* import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './navigation/header/header.component';
@@ -21,6 +22,7 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     /* HomeComponent,
     LoginComponent,
     HeaderComponent,
