@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from './../auth/auth.service';
+import { AuthenticationService } from '@/_services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,         // {3}
-    private authService: AuthService // {4}
+    private authService: AuthenticationService // {4}
   ) {}
 
   ngOnInit() {

@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //se importa el archivo que tiene todos los modulos de material
 import { MaterialModule } from './material.module';
 //dum: componentes generados.
+import { JwtInterceptor, ErrorInterceptor } from '@/_helpers';
 import { RoutingModule } from './routing.module';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './navigation/header/header.component';
@@ -43,7 +44,10 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     RoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
