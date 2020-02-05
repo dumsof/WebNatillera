@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { AuthenticationService } from '@/_services/authentication.service';
 
 @Component({
@@ -10,8 +12,10 @@ import { AuthenticationService } from '@/_services/authentication.service';
 export class LoginComponent implements OnInit {
   form: FormGroup;                    // {1}
   private formSubmitAttempt: boolean; // {2}
-
+  returnUrl: string;
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder,         // {3}
     private authService: AuthenticationService // {4}
   ) {}
@@ -21,6 +25,9 @@ export class LoginComponent implements OnInit {
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   isFieldInvalid(field: string) { // {6}
@@ -32,7 +39,14 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.authService.login(this.form.value); // {7}
+      this.authService.login(this.form.value)
+       .subscribe(
+        data => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+         console.log('ERROR SERVICIO:', error);
+        });
     }
     this.formSubmitAttempt = true;             // {8}
   }

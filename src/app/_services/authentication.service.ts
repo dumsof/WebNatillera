@@ -3,29 +3,34 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { User } from '@/_models';
+import { User, RespuestaLogueo } from '@/_models';
+import {environment} from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentUserSubject: BehaviorSubject<User>;
-    public currentUser: Observable<User>;
+    private currentUserSubject: BehaviorSubject<RespuestaLogueo>;
+    public currentUser: Observable<RespuestaLogueo>;
 
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+        this.currentUserSubject = new BehaviorSubject<RespuestaLogueo>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
-    public get currentUserValue(): User {
+    public get currentUserValue(): RespuestaLogueo {
         return this.currentUserSubject.value;
     }
 
-    login(username, password) {
-        return this.http.post<any>(`/users/authenticate`, { username, password })
-            .pipe(map(user => {
+    login(user: User) {
+        const datosUsuario = {
+            email: user.userName,
+            password: user.password
+          };
+        return this.http.post<RespuestaLogueo>(`${environment.apiUrl}/CuentaUsuario/Logueo`, datosUsuario)
+            .pipe(map(respuesta => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
-                return user;
+                localStorage.setItem('currentUser', JSON.stringify(respuesta));
+                this.currentUserSubject.next(respuesta);
+                return respuesta;
             }));
     }
 
