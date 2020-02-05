@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AuthenticationService } from '@/_services/authentication.service';
+import { AuthenticationService, AlertService } from '@/_services';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +10,7 @@ import { AuthenticationService } from '@/_services/authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  loading = false;
   form: FormGroup;                    // {1}
   private formSubmitAttempt: boolean; // {2}
   returnUrl: string;
@@ -17,8 +18,9 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,         // {3}
-    private authService: AuthenticationService // {4}
-  ) {}
+    private authService: AuthenticationService, // {4}
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
     this.form = this.fb.group({     // {5}
@@ -38,16 +40,25 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.form.valid) {
-      this.authService.login(this.form.value)
-       .subscribe(
+    this.formSubmitAttempt = true;
+
+     // reset alerts on submit
+     this.alertService.clear();
+
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.loading = true;
+
+    this.authService.login(this.form.value)
+      .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-         console.log('ERROR SERVICIO:', error);
+          this.alertService.error(error);
+          this.loading = false;
         });
-    }
-    this.formSubmitAttempt = true;             // {8}
   }
 }
