@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.formSubmitAttempt = true;
 
-     // reset alerts on submit
-     this.alertService.clear();
+    // reset alerts on submit
+    this.alertService.clear();
 
     if (this.form.invalid) {
       return;
@@ -54,6 +54,10 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.form.value)
       .subscribe(
         data => {
+          if (!data.estadoTransaccion) {
+            this.alertService.success(data.mensaje.contenido);
+            return;
+          }
           this.router.navigate([this.returnUrl]);
         },
         error => {
