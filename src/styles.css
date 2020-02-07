@@ -9,3 +9,16 @@ body {
     margin: 0;
     height: 100%;
 }
+
+
+/* Dum: clases utilizadas para correr item del menu a la derecha */
+
+.item-menu-derecha {
+    flex: 1 1 auto;
+}
+
+.active {
+    border: 1px solid #ffffff;
+    padding: 1px;
+    border-radius: 5px;
+}

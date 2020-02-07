@@ -16,7 +16,9 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { LoginComponent } from './login/login.component';
-import { AlertComponent, LoaderComponent } from '@/_components';
+
+//en el archivo index dentro de la carpeta componente se agrupa todos los componentes
+import { AlertComponent, LoaderComponent, UsuarioComponent } from '@/_components';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { AlertComponent, LoaderComponent } from '@/_components';
     SidenavListComponent,
     LoginComponent,
     AlertComponent,
-    LoaderComponent
+    LoaderComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,
