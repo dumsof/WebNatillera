@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../../_services/authentication.service';
+import { RespuestaLogueo } from '../../_models/respuestalogueo.model';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +11,13 @@ import { AuthenticationService } from '../../_services/authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
+  currentUser: RespuestaLogueo;
+
   @Output() public sidenavToggle = new EventEmitter();
 
   constructor(
     private authenticationService: AuthenticationService,
-    private router: Router) { }
+    private router: Router) { this.authenticationService.currentUser.subscribe(x => this.currentUser = x); }
 
   ngOnInit() {
   }
