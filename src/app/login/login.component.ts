@@ -4,6 +4,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthenticationService, AlertService } from '@/_services';
 
+import Swal from 'sweetalert2';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -55,7 +58,12 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           if (!data.estadoTransaccion) {
-            this.alertService.success(data.mensaje.contenido);
+            Swal.fire({
+              title: data.mensaje.titulo,
+              text: data.mensaje.contenido,
+              icon: 'warning',
+              confirmButtonText: 'Aceptar'
+            });
             return;
           }
           this.router.navigate([this.returnUrl]);
