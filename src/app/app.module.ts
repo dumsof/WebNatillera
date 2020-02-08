@@ -18,7 +18,8 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { LoginComponent } from './login/login.component';
 
 //en el archivo index dentro de la carpeta componente se agrupa todos los componentes
-import { AlertComponent, LoaderComponent, UsuarioComponent } from '@/_components';
+import { AlertComponent, LoaderComponent, UsuarioComponent, TablausuarioComponent } from '@/_components';
+
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AlertComponent, LoaderComponent, UsuarioComponent } from '@/_components
     LoginComponent,
     AlertComponent,
     LoaderComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    TablausuarioComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,14 @@
+table {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.mat-form-field {
+    margin-top: 2%;
+    font-size: 14px;
+    width: 100%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
