@@ -1,3 +1,4 @@
+import { Mensaje } from './mensaje';
 export class RespuestaLogueo {
     id: string;
     nombres: string;
@@ -9,10 +10,5 @@ export class RespuestaLogueo {
     token: string;
     expiracion: string;
     estadoTransaccion: boolean;
-    mensaje:
-        {
-            identificador: number;
-            titulo: string;
-            contenido: string;
-        };
+    mensaje: Mensaje;
 }

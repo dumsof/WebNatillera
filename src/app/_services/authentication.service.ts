@@ -5,6 +5,8 @@ import { map } from 'rxjs/operators';
 
 import { User, RespuestaLogueo } from '@/_models';
 import { environment } from '../../environments/environment';
+import { RespuestaObtenerUsuario } from '../_models/respuestaobtenerUsuario.model';
+import { Mensaje } from '../_models/mensaje';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -34,6 +36,22 @@ export class AuthenticationService {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(respuesta));
                 this.currentUserSubject.next(respuesta);
+                return respuesta;
+            }));
+    }
+    obtenerUsuarios(): Observable<RespuestaObtenerUsuario> {
+        return this.http.get<RespuestaObtenerUsuario>(`${environment.apiUrl}/CuentaUsuario/ObtenerUsuarios`)
+            .pipe(map(respuesta => {
+                return respuesta;
+            }));
+    }
+
+    deleteUsuario(userId: string): Observable<Mensaje> {
+        const datosUsuario = {
+            usuarioId: userId,
+        };
+        return this.http.post<Mensaje>(`${environment.apiUrl}/CuentaUsuario/DeleteUsuario`, datosUsuario)
+            .pipe(map(respuesta => {
                 return respuesta;
             }));
     }
