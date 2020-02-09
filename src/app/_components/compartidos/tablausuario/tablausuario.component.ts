@@ -3,8 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuthenticationService } from '@/_services';
-import { RespuestaObtenerUsuario, User } from '@/_models';
-import { RespuestaLogueo } from '../../../_models/respuestalogueo.model';
+import { RespuestaObtenerUsuario, User, RespuestaLogueo } from '@/_models';
+import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -43,12 +44,26 @@ export class TablausuarioComponent implements OnInit {
 
   borrarUsuario(usuarioBorrar: User) {
 
-    this.autenticationService
-      .deleteUsuario(usuarioBorrar.id.toString())
-      .subscribe(respuesta => {
-        console.log('borrando:', respuesta);
-        this.obtenerUsuarios();
-      });
+    Swal.fire({
+      title: 'Borrar Registro',
+      text: '¿Esta seguro de borrar el registro?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+
+    }).then(result => {
+      if (result.value) {
+        this.autenticationService
+          .deleteUsuario(usuarioBorrar.id.toString())
+          .subscribe(respuesta => {
+            console.log('borrando:', respuesta);
+            //this.obtenerUsuarios();
+            Swal.fire('Borrar Registro', 'Registro Borrado con éxito !', 'success');
+          }, error => { console.log(error); });
+      }
+    });
   }
 
   onNuevoUsuario() {
