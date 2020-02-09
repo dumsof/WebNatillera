@@ -1,5 +1,5 @@
 import { User } from './user.model';
-import { Mensaje } from './mensaje';
+import { Mensaje } from './mensaje.models';
 export class RespuestaObtenerUsuario {
     usuarios: User[];
     mensaje?: Mensaje;

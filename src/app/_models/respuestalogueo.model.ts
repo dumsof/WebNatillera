@@ -1,4 +1,4 @@
-import { Mensaje } from './mensaje';
+import { Mensaje } from './mensaje.models';
 export class RespuestaLogueo {
     id: string;
     nombres: string;

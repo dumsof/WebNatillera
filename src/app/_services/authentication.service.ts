@@ -3,10 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { User, RespuestaLogueo } from '@/_models';
+import { User, RespuestaLogueo, RespuestaObtenerUsuario, Respuesta } from '@/_models';
 import { environment } from '../../environments/environment';
-import { RespuestaObtenerUsuario } from '../_models/respuestaobtenerUsuario.model';
-import { Mensaje } from '../_models/mensaje';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -46,11 +44,11 @@ export class AuthenticationService {
             }));
     }
 
-    deleteUsuario(userId: string): Observable<Mensaje> {
+    deleteUsuario(userId: string): Observable<Respuesta> {
         const datosUsuario = {
             usuarioId: userId,
         };
-        return this.http.post<Mensaje>(`${environment.apiUrl}/CuentaUsuario/DeleteUsuario`, datosUsuario)
+        return this.http.post<Respuesta>(`${environment.apiUrl}/CuentaUsuario/DeleteUsuario`, { userId })
             .pipe(map(respuesta => {
                 return respuesta;
             }));
