@@ -43,11 +43,11 @@ export class TablausuarioComponent implements OnInit {
 
   borrarUsuario(usuarioBorrar: User) {
 
-
     this.autenticationService
       .deleteUsuario(usuarioBorrar.id.toString())
       .subscribe(respuesta => {
         console.log('borrando:', respuesta);
+        this.obtenerUsuarios();
       });
   }
 
