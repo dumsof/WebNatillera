@@ -38,6 +38,7 @@ export class AuthenticationService {
             }));
     }
     obtenerUsuarios(): Observable<RespuestaObtenerUsuario> {
+
         return this.http.get<RespuestaObtenerUsuario>(`${environment.apiUrl}/CuentaUsuario/ObtenerUsuarios`)
             .pipe(map(respuesta => {
                 return respuesta;
@@ -45,10 +46,8 @@ export class AuthenticationService {
     }
 
     deleteUsuario(userId: string): Observable<Respuesta> {
-        const datosUsuario = {
-            usuarioId: userId,
-        };
-        return this.http.post<Respuesta>(`${environment.apiUrl}/CuentaUsuario/DeleteUsuario`, { userId })
+
+        return this.http.post<Respuesta>(`${environment.apiUrl}/CuentaUsuario/DeleteUsuario`, userId)
             .pipe(map(respuesta => {
                 return respuesta;
             }));
