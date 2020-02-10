@@ -2,10 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { AuthenticationService } from '@/_services';
-import { RespuestaObtenerUsuario, User, RespuestaLogueo } from '@/_models';
+
 import Swal from 'sweetalert2';
 
+import { MatDialog, throwMatDialogContentAlreadyAttachedError } from '@angular/material/dialog';
+
+import { AuthenticationService } from '@/_services';
+import { RespuestaObtenerUsuario, User, RespuestaLogueo } from '@/_models';
+import { ModalComponent } from '../modal/modal.component';
 
 
 @Component({
@@ -23,7 +27,7 @@ export class TablausuarioComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  constructor(private autenticationService: AuthenticationService) {
+  constructor(private autenticationService: AuthenticationService, public dialog: MatDialog) {
 
   }
 
@@ -68,6 +72,7 @@ export class TablausuarioComponent implements OnInit {
 
   onNuevoUsuario() {
     console.log('nuevo usuario:');
+    this.openDialog();
   }
 
   obtenerUsuarios() {
@@ -76,6 +81,12 @@ export class TablausuarioComponent implements OnInit {
       .subscribe(respuestaObtener => {
         this.dataSource.data = respuestaObtener.usuarios;
       });
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ModalComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('resultado', result);
+    });
   }
 
 }

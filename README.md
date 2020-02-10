@@ -28,3 +28,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ##como generar componente indicar a que modulo se debe agregar
 ng g component nameComponent --module=app.module.ts
+
+ng g component _components/compartidos/modal --module=app.module.ts
+ng g component _components/nuevousuario --module=app.module.ts
+ng g component _components/editarusuario --module=app.module.ts
+

@@ -18,7 +18,9 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { LoginComponent } from './login/login.component';
 
 //en el archivo index dentro de la carpeta componente se agrupa todos los componentes
-import { AlertComponent, LoaderComponent, UsuarioComponent, TablausuarioComponent } from '@/_components';
+import { AlertComponent, LoaderComponent, UsuarioComponent } from '@/_components';
+import { ModalComponent, TablausuarioComponent } from '@/_components/compartidos';
+import { NuevousuarioComponent } from './_components/nuevousuario/nuevousuario.component';
 
 
 
@@ -32,7 +34,9 @@ import { AlertComponent, LoaderComponent, UsuarioComponent, TablausuarioComponen
     AlertComponent,
     LoaderComponent,
     UsuarioComponent,
-    TablausuarioComponent
+    TablausuarioComponent,
+    ModalComponent,
+    NuevousuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,8 @@ import { AlertComponent, LoaderComponent, UsuarioComponent, TablausuarioComponen
     RoutingModule,
     HttpClientModule
   ],
+  //poder utilizar el componente desde cualquier parte
+  entryComponents: [ModalComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
