@@ -64,7 +64,6 @@ export class TablausuarioComponent implements OnInit, AfterViewInit {
         this.autenticationService
           .deleteUsuario(usuarioBorrar.id.toString())
           .subscribe(respuesta => {
-            console.log('borrando:', respuesta);
             Swal.fire('Borrar Registro', 'Registro Borrado con éxito !', 'success');
           }, error => { console.log(error); });
       }
@@ -72,7 +71,6 @@ export class TablausuarioComponent implements OnInit, AfterViewInit {
   }
 
   onNuevoUsuario() {
-    console.log('nuevo usuario:');
     this.openDialog();
   }
 
