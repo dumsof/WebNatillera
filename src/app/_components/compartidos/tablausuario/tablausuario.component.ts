@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 import Swal from 'sweetalert2';
 
-import { MatDialog, throwMatDialogContentAlreadyAttachedError } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 import { AuthenticationService } from '@/_services';
-import { RespuestaObtenerUsuario, User, RespuestaLogueo } from '@/_models';
+import { User } from '@/_models';
 import { ModalComponent } from '../modal/modal.component';
 
 
@@ -17,7 +17,7 @@ import { ModalComponent } from '../modal/modal.component';
   templateUrl: './tablausuario.component.html',
   styleUrls: ['./tablausuario.component.css']
 })
-export class TablausuarioComponent implements OnInit {
+export class TablausuarioComponent implements OnInit, AfterViewInit {
   public usuariosRegistrado = [];
 
   //campos que lleva el datatable de material
@@ -31,10 +31,12 @@ export class TablausuarioComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    this.obtenerUsuarios();
-    this.dataSource.sort = this.sort;
+  ngOnInit() { this.obtenerUsuarios(); }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {

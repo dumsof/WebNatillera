@@ -1,5 +1,5 @@
 <div class="nueve-usuario-container">
-    <form [formGroup]="nuevoFormUsuario" (ngSubmit)="addNuevoUsuario(nuevoFormUsuario)">
+    <form [formGroup]="nuevoFormUsuario" (ngSubmit)="addNuevoUsuario(nuevoFormUsuario.value)">
         <mat-form-field>
             <mat-label>Número Documento</mat-label>
             <input matInput placeholder="Número Documento" formControlName="cedula" required>
@@ -14,17 +14,28 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Ségundo Apellido</mat-label>
-            <input matInput placeholder="Ségundo Apellido" formControlName="segundoApelldo" required>
+            <input matInput placeholder="Ségundo Apellido" formControlName="segundoApellido" required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Celular</mat-label>
+            <input matInput placeholder="celular" formControlName="celular" required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="email" required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="password" formControlName="password" required>
         </mat-form-field>
         <div class="container-input-file">
             <label class="custom-file">
-            <input type="file" name="" id="">
-            <mat-icon>cloud_upload</mat-icon><span>Seleccione Fotografia</span>
+            <input type="file"formControlName="imageUsuario" (change)="cargarFoto($event)">
+            <mat-icon>cloud_upload</mat-icon><span>Fotografia</span>
         </label>
         </div>
         <div class="containder-button">
             <input type="submit" class="mat-flat-button" value="Guardar">
         </div>
     </form>
-
 </div>

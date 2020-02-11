@@ -1,21 +1,48 @@
-/* .nueve-usuario-container {
-    display: flex;
-    flex-direction: column;
-    form {
-        margin-bottom: 20px;
-        input[type='file'] {
-            display: none;
-        }
-        input.mat-flat-button {
-            width: 100%;
-            background: #4e0561;
-            &:hover {
-                background: #3c034b;
-            }
-        }
-    }
-} */
-
+ .nueve-usuario-container {
+     display: flex;
+     flex-direction: column;
+     font-size: 12px;
+ }
+ 
+ .nueve-usuario-container form {
+     margin-bottom: 20px;
+ }
+ 
+ .nueve-usuario-container form input.mat-flat-button {
+     margin-top: 30px;
+     width: 100%;
+     background-color: #3f51b5;
+     color: white;
+ }
+ 
+ .nueve-usuario-container form input.mat-flat-button:hover {
+     background-color: teal;
+ }
+ 
+ .nueve-usuario-container form input[type='file'] {
+     display: none;
+ }
+ 
+ .custom-file {
+     border: 1px solid #ccc;
+     display: inline-block;
+     padding: 2px 0;
+     cursor: pointer;
+     width: 100%;
+ }
+ 
+ .container-input-file {
+     margin-top: 1rem;
+ }
+ 
+ .containder-button {
+     min-height: 80px;
+ }
+ 
+ mat-form-field {
+     width: 100%;
+ }
+ /* 
 .example-container .mat-form-field+.mat-form-field {
     margin-left: 8px;
 }
@@ -30,4 +57,4 @@
 
 .example-container form>* {
     margin: 5px 0;
-}
+} */
