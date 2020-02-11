@@ -12,15 +12,15 @@ import { MaterialModule } from './material.module';
 //dum: componentes generados.
 import { JwtInterceptor, ErrorInterceptor, LoaderInterceptor } from '@/_helpers';
 import { RoutingModule } from './routing.module';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './_components/page/home/home.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { LoginComponent } from './login/login.component';
 
 //en el archivo index dentro de la carpeta componente se agrupa todos los componentes
-import { AlertComponent, LoaderComponent, UsuarioComponent } from '@/_components';
+import { AlertComponent, LoaderComponent, UsuarioComponent, NuevousuarioComponent } from '@/_components';
 import { ModalComponent, TablausuarioComponent } from '@/_components/compartidos';
-import { NuevousuarioComponent } from './_components/nuevousuario/nuevousuario.component';
+
 
 
 

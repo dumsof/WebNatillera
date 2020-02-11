@@ -1,0 +1,33 @@
+/* .nueve-usuario-container {
+    display: flex;
+    flex-direction: column;
+    form {
+        margin-bottom: 20px;
+        input[type='file'] {
+            display: none;
+        }
+        input.mat-flat-button {
+            width: 100%;
+            background: #4e0561;
+            &:hover {
+                background: #3c034b;
+            }
+        }
+    }
+} */
+
+.example-container .mat-form-field+.mat-form-field {
+    margin-left: 8px;
+}
+
+.example-container .mat-form-field {
+    width: 220px;
+}
+
+.example-container form {
+    margin-bottom: 20px;
+}
+
+.example-container form>* {
+    margin: 5px 0;
+}
