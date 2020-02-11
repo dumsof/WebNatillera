@@ -65,7 +65,6 @@ export class TablausuarioComponent implements OnInit, AfterViewInit {
           .deleteUsuario(usuarioBorrar.id.toString())
           .subscribe(respuesta => {
             console.log('borrando:', respuesta);
-            //this.obtenerUsuarios();
             Swal.fire('Borrar Registro', 'Registro Borrado con éxito !', 'success');
           }, error => { console.log(error); });
       }
@@ -87,7 +86,7 @@ export class TablausuarioComponent implements OnInit, AfterViewInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log('resultado', result);
+      this.obtenerUsuarios();
     });
   }
 
