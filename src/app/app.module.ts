@@ -18,8 +18,9 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { LoginComponent } from './login/login.component';
 
 //en el archivo index dentro de la carpeta componente se agrupa todos los componentes
-import { AlertComponent, LoaderComponent, UsuarioComponent, NuevousuarioComponent } from '@/_components';
+import { AlertComponent, LoaderComponent, UsuarioComponent, NuevousuarioComponent, EditarusuarioComponent } from '@/_components';
 import { ModalComponent, TablausuarioComponent } from '@/_components/compartidos';
+
 
 
 
@@ -36,7 +37,8 @@ import { ModalComponent, TablausuarioComponent } from '@/_components/compartidos
     UsuarioComponent,
     TablausuarioComponent,
     ModalComponent,
-    NuevousuarioComponent
+    NuevousuarioComponent,
+    EditarusuarioComponent
   ],
   imports: [
     BrowserModule,

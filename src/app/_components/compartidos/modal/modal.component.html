@@ -1,5 +1,11 @@
-<p>Usuario {{message}}</p>
+<h2 mat-dialog-title>{{ data.message }} Usuario</h2>
 <mat-dialog-content>
-    <app-nuevousuario>
-    </app-nuevousuario>
+    <div *ngIf="data.content; else mostrarFormularioNuevo">
+        <app-editarusuario [usuario]="data.content">
+        </app-editarusuario>
+    </div>
+    <ng-template #mostrarFormularioNuevo>
+        <app-nuevousuario>
+        </app-nuevousuario>
+    </ng-template>
 </mat-dialog-content>

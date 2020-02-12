@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 
 import { AuthenticationService } from '@/_services';
-import { User } from '@/_models';
+import { User, Usuario } from '@/_models';
 import { ModalComponent } from '../modal/modal.component';
 
 
@@ -23,7 +23,7 @@ export class TablausuarioComponent implements OnInit, AfterViewInit {
   //campos que lleva el datatable de material
   displayedColumns: string[] = ['cedula', 'nombres', 'primerApellido',
     'segundoApellido', 'telefono', 'celular', 'email', 'direccion', 'editar', 'borrar'];
-  dataSource = new MatTableDataSource<User>();
+  dataSource = new MatTableDataSource<Usuario>();
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -44,11 +44,11 @@ export class TablausuarioComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  editarUsuario(usurioEditar: User) {
-    console.log('usuario editar:', usurioEditar);
+  editarUsuario(usurioEditar: Usuario) {
+    this.openDialog(usurioEditar);
   }
 
-  borrarUsuario(usuarioBorrar: User) {
+  borrarUsuario(usuarioBorrar: Usuario) {
 
     Swal.fire({
       title: 'Borrar Registro',
@@ -81,8 +81,14 @@ export class TablausuarioComponent implements OnInit, AfterViewInit {
         this.dataSource.data = respuestaObtener.usuarios;
       });
   }
-  openDialog(): void {
-    const dialogRef = this.dialog.open(ModalComponent);
+  openDialog(usuario?: Usuario): void {
+    const config = {
+      data: {
+        message: usuario ? 'Editar' : 'Nuevo',
+        content: usuario
+      }
+    };
+    const dialogRef = this.dialog.open(ModalComponent, config);
     dialogRef.afterClosed().subscribe(result => {
       this.obtenerUsuarios();
     });

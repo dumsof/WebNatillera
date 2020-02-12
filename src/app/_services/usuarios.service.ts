@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {  Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Usuario, RespuestaObtenerUsuario, Respuesta } from '@/_models';
@@ -34,7 +34,10 @@ export class UsuariosService {
                     return respuesta;
                 }));
         } else {
-            return null;
+            return this.http.post<Respuesta>(`${environment.apiUrl}/CuentaUsuario/EditarUsuario`, datosUsuario)
+                .pipe(map(respuesta => {
+                    return respuesta;
+                }));
         }
     }
     obtenerUsuarios(): Observable<RespuestaObtenerUsuario> {
@@ -50,9 +53,9 @@ export class UsuariosService {
             usuarioId: userId
         };
         return this.http.post<Respuesta>(`${environment.apiUrl}/CuentaUsuario/DeleteUsuario`, datosUsuario)
-         .pipe(map(respuesta => {
-             return respuesta;
-         }));
+            .pipe(map(respuesta => {
+                return respuesta;
+            }));
     }
 
     subirImage() {

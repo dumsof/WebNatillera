@@ -31,5 +31,9 @@ ng g component nameComponent --module=app.module.ts
 
 ng g component _components/compartidos/modal --module=app.module.ts
 ng g component _components/nuevousuario --module=app.module.ts
-ng g component _components/editarusuario --module=app.module.ts
+ng g component _components/usuarios/editarusuario --module=app.module.ts
+
+#poder publicar la aplicacion en produccion
+ng build --prod
+
 

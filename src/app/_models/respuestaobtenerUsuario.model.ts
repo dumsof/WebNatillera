@@ -1,7 +1,7 @@
-import { User } from './user.model';
 import { Mensaje } from './mensaje.models';
+import { Usuario } from './usuario.model';
 export class RespuestaObtenerUsuario {
-    usuarios: User[];
+    usuarios: Usuario[];
     mensaje?: Mensaje;
     estadoTransaccion: boolean;
 
