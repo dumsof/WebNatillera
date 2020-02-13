@@ -19,8 +19,8 @@ export class EditarusuarioComponent implements OnInit {
 
   public editFormUsuario = new FormGroup(
     {
-      id: new FormControl('', Validators.required, Validators.length[15]),
-      cedula: new FormControl('', Validators.required, Validators.length[10]),
+      id: new FormControl('', [Validators.required, Validators.maxLength(15)]),
+      cedula: new FormControl('', [Validators.required, Validators.maxLength(15)]),
       nombres: new FormControl('', Validators.required),
       primerApellido: new FormControl('', Validators.required),
       segundoApellido: new FormControl('', Validators.required),
@@ -28,6 +28,10 @@ export class EditarusuarioComponent implements OnInit {
       celular: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
+      /*  password: new FormControl({
+         value : '',
+         disabled: true
+       }, [ Validators.required ])  para deshabilitar el campo*/
     });
 
   constructor(private usuarioService: UsuariosService, private dialog: MatDialog
