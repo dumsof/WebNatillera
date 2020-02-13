@@ -50,8 +50,9 @@ export class UsuariosService {
 
     deleteUsuario(userId: string): Observable<Respuesta> {
         const datosUsuario = {
-            usuarioId: userId
+            UsuarioId: userId
         };
+
         return this.http.post<Respuesta>(`${environment.apiUrl}/CuentaUsuario/DeleteUsuario`, datosUsuario)
             .pipe(map(respuesta => {
                 return respuesta;

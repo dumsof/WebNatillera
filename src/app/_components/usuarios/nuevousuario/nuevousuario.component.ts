@@ -17,13 +17,14 @@ export class NuevousuarioComponent implements OnInit {
 
   public nuevoFormUsuario = new FormGroup(
     {
-      cedula: new FormControl('', Validators.required, Validators.length[10]),
-      nombres: new FormControl('', Validators.required),
+      cedula: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.pattern('^[0-9]*$')]),
+      nombres: new FormControl('', [Validators.required, Validators.maxLength(50)]),
       primerApellido: new FormControl('', Validators.required),
       segundoApellido: new FormControl('', Validators.required),
       imageUsuario: new FormControl(''),
       celular: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.maxLength(50),
+      Validators.pattern('^[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]),
       password: new FormControl('', Validators.required)
     });
 
@@ -72,6 +73,19 @@ export class NuevousuarioComponent implements OnInit {
   onClose() {
     this.nuevoFormUsuario.reset();
     this.dialog.closeAll();
+  }
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.nuevoFormUsuario.controls[controlName].hasError(errorName);
+  }
+
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
   }
 
 }

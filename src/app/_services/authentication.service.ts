@@ -37,21 +37,6 @@ export class AuthenticationService {
                 return respuesta;
             }));
     }
-    obtenerUsuarios(): Observable<RespuestaObtenerUsuario> {
-
-        return this.http.get<RespuestaObtenerUsuario>(`${environment.apiUrl}/CuentaUsuario/ObtenerUsuarios`)
-            .pipe(map(respuesta => {
-                return respuesta;
-            }));
-    }
-
-    deleteUsuario(userId: string): Observable<Respuesta> {
-
-        return this.http.post<Respuesta>(`${environment.apiUrl}/CuentaUsuario/DeleteUsuario`, userId)
-            .pipe(map(respuesta => {
-                return respuesta;
-            }));
-    }
 
     logout() {
         // remove user from local storage and set current user to null

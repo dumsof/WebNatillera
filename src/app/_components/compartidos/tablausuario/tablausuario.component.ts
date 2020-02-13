@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 
 import { MatDialog } from '@angular/material/dialog';
 
-import { AuthenticationService } from '@/_services';
+import { UsuariosService } from '@/_services';
 import { User, Usuario } from '@/_models';
 import { ModalComponent } from '../modal/modal.component';
 
@@ -27,7 +27,7 @@ export class TablausuarioComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  constructor(private autenticationService: AuthenticationService, public dialog: MatDialog) {
+  constructor(private usuarioService: UsuariosService, public dialog: MatDialog) {
 
   }
 
@@ -61,9 +61,11 @@ export class TablausuarioComponent implements OnInit, AfterViewInit {
 
     }).then(result => {
       if (result.value) {
-        this.autenticationService
+        console.log('metodo borrar:', usuarioBorrar);
+        this.usuarioService
           .deleteUsuario(usuarioBorrar.id.toString())
           .subscribe(respuesta => {
+            this. obtenerUsuarios();
             Swal.fire('Borrar Registro', 'Registro Borrado con éxito !', 'success');
           }, error => { console.log(error); });
       }
@@ -75,7 +77,7 @@ export class TablausuarioComponent implements OnInit, AfterViewInit {
   }
 
   obtenerUsuarios() {
-    this.autenticationService
+    this.usuarioService
       .obtenerUsuarios()
       .subscribe(respuestaObtener => {
         this.dataSource.data = respuestaObtener.usuarios;
