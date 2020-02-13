@@ -3,7 +3,7 @@
         <mat-form-field>
             <mat-label>Número Documento</mat-label>
             <input (keypress)="numberOnly($event)" matInput placeholder="Número Documento" formControlName="cedula" required>
-            <mat-hint></mat-hint>
+            <mat-hint>El campo número documento no debe tener mas de 15 caracteres.</mat-hint>
             <mat-error *ngIf="hasError('cedula', 'required')">El campo número documento es requerido.</mat-error>
             <mat-error *ngIf="hasError('cedula', 'maxlength')">El campo número documento no debe tener mas de 15 caracteres.</mat-error>
             <mat-error *ngIf="hasError('cedula', 'pattern')">El campo número documento debe ser númerico.</mat-error>
@@ -17,24 +17,33 @@
         <mat-form-field>
             <mat-label>Primer Apellido</mat-label>
             <input matInput placeholder="Primer Apellido" formControlName="primerApellido" required>
+            <mat-error *ngIf="hasError('primerApellido', 'required')">El campo primer apellido es requerido.</mat-error>
+            <mat-error *ngIf="hasError('primerApellido', 'maxlength')">El campo primer apellido no debe tener mas de 100 caracteres.</mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Ségundo Apellido</mat-label>
             <input matInput placeholder="Ségundo Apellido" formControlName="segundoApellido" required>
+            <mat-error *ngIf="hasError('segundoApellido', 'required')">El campo segundo apellido es requerido.</mat-error>
+            <mat-error *ngIf="hasError('segundoApellido', 'maxlength')">El campo segundo apellido no debe tener mas de 100 caracteres.</mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Celular</mat-label>
-            <input matInput placeholder="celular" formControlName="celular" required>
+            <input (keypress)="numberOnly($event)" matInput placeholder="celular" formControlName="celular" required>
+            <mat-error *ngIf="hasError('celular', 'required')">El campo celular es requerido.</mat-error>
+            <mat-error *ngIf="hasError('celular', 'maxlength')">El campo celular no debe tener mas de 12 caracteres.</mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Email</mat-label>
             <input matInput type="email" placeholder="Email" formControlName="email" required>
+            <mat-error *ngIf="hasError('email', 'required')">El campo email es requerido.</mat-error>
             <mat-error *ngIf="hasError('email', 'maxlength')">El campo email no debe tener mas de 50 caracteres</mat-error>
             <mat-error *ngIf="hasError('email', 'pattern')">El campo email debe contener una dirección de correo valida.</mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Password</mat-label>
             <input matInput type="password" placeholder="password" formControlName="password" required>
+            <mat-error *ngIf="hasError('password', 'required')">El campo password es requerido.</mat-error>
+            <mat-error *ngIf="hasError('email', 'minlength')">El campo email debe ser mayor a 6 caracteres</mat-error>
         </mat-form-field>
         <div class="container-input-file">
             <label class="custom-file">
@@ -43,7 +52,7 @@
         </label>
         </div>
         <div class="containder-button">
-            <button type="submit" class="mat-flat-button" mat-raised-button color="primary" [disabled]="!nuevoFormUsuario.valid">Guardar</button>
+            <input type="submit" class="mat-flat-button" value="Guardar">
         </div>
     </form>
 </div>

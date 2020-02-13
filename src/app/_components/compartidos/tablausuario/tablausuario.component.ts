@@ -1,11 +1,11 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatDialogConfig, MatDialog } from '@angular/material';
 
 import Swal from 'sweetalert2';
 
-import { MatDialog } from '@angular/material/dialog';
+
 
 import { UsuariosService } from '@/_services';
 import { User, Usuario } from '@/_models';
@@ -65,7 +65,7 @@ export class TablausuarioComponent implements OnInit, AfterViewInit {
         this.usuarioService
           .deleteUsuario(usuarioBorrar.id.toString())
           .subscribe(respuesta => {
-            this. obtenerUsuarios();
+            this.obtenerUsuarios();
             Swal.fire('Borrar Registro', 'Registro Borrado con éxito !', 'success');
           }, error => { console.log(error); });
       }
@@ -84,13 +84,21 @@ export class TablausuarioComponent implements OnInit, AfterViewInit {
       });
   }
   openDialog(usuario?: Usuario): void {
-    const config = {
+   /*  const config = {
       data: {
         message: usuario ? 'Editar' : 'Nuevo',
         content: usuario
       }
+    }; */
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      message: usuario ? 'Editar' : 'Nuevo',
+      content: usuario
     };
-    const dialogRef = this.dialog.open(ModalComponent, config);
+    const dialogRef = this.dialog.open(ModalComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       this.obtenerUsuarios();
     });

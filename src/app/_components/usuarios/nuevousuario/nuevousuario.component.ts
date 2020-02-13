@@ -19,13 +19,13 @@ export class NuevousuarioComponent implements OnInit {
     {
       cedula: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.pattern('^[0-9]*$')]),
       nombres: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-      primerApellido: new FormControl('', Validators.required),
-      segundoApellido: new FormControl('', Validators.required),
+      primerApellido: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+      segundoApellido: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       imageUsuario: new FormControl(''),
-      celular: new FormControl('', Validators.required),
+      celular: new FormControl('', [Validators.required, Validators.maxLength(12)]),
       email: new FormControl('', [Validators.required, Validators.maxLength(50),
       Validators.pattern('^[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]),
-      password: new FormControl('', Validators.required)
+      password: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
 
   constructor(private usuarioService: UsuariosService, private dialog: MatDialog
@@ -79,6 +79,7 @@ export class NuevousuarioComponent implements OnInit {
     return this.nuevoFormUsuario.controls[controlName].hasError(errorName);
   }
 
+  /* permite solo numeros en el campo input que se utilize */
   numberOnly(event): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
