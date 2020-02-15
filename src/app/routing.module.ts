@@ -7,9 +7,9 @@ import { UsuarioComponent } from '@/_components';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'home', component: HomeComponent },
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
-    { path: 'usuario', component: UsuarioComponent },
+    { path: 'usuario', component: UsuarioComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: 'login', pathMatch: 'full' }
 
 ];
