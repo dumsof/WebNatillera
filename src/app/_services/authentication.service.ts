@@ -25,7 +25,7 @@ export class AuthenticationService {
             email: user.userName,
             password: user.password
         };
-        return this.http.post<RespuestaLogueo>(`${environment.apiUrl}/CuentaUsuario/Logueo`, datosUsuario)
+        return this.http.post<RespuestaLogueo>(`${environment.apiUrl}/Autentificacion/Logueo`, datosUsuario)
             .pipe(map(respuesta => {
                 if (!respuesta.estadoTransaccion) {
                     console.log('El usuario no existe :', respuesta);
@@ -50,7 +50,7 @@ export class AuthenticationService {
         if (respuestaToken) {
 
             /* se obtiene la fecha en la cual expira el token y se realiza la validacion para saber si este expiro */
-            //const expira = Number(respuestaToken.expiracion);
+            //const expira = Number(respuestaToken.FechaExpirationToken);
 
             //temporarl miestras se resueve el problema de la fecha expiracion del backend.
             const expira = Number(localStorage.getItem('expiraToken'));

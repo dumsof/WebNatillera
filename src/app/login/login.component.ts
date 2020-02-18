@@ -56,11 +56,11 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.form.value)
       .subscribe(
-        data => {
-          if (!data.estadoTransaccion) {
+        respuestaLogueo => {
+          if (!respuestaLogueo.estadoTransaccion) {
             Swal.fire({
-              title: data.mensaje.titulo,
-              text: data.mensaje.contenido,
+              title: respuestaLogueo.mensaje.titulo,
+              text: respuestaLogueo.mensaje.contenido,
               icon: 'warning',
               confirmButtonText: 'Aceptar'
             });

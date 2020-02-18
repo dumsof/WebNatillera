@@ -1,14 +1,9 @@
 import { Mensaje } from './mensaje.models';
+import { Usuario } from './usuario.model';
 export class RespuestaLogueo {
-    id: string;
-    nombres: string;
-    primerApellido: string;
-    segundoapellido: string;
-    direccion: string;
-    telefono: string;
-    celular: string;
-    token: string;
-    expiracion: string;
     estadoTransaccion: boolean;
+    usuario: Usuario;
     mensaje: Mensaje;
+    token: string;
+    fechaExpirationToken: string;
 }
