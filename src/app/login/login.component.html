@@ -6,18 +6,18 @@
                     <p>LOGIN</p>
                 </h3>
                 <mat-form-field class="full-width-input">
-                    <input matInput placeholder="User" formControlName="userName" required>
+                    <input matInput placeholder="Usuario" formControlName="userName" required>
                     <mat-error *ngIf="isFieldInvalid('userName')">
-                        Please inform your user name
+                        El campo usuario es requerido.
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field class="full-width-input">
                     <input matInput type="password" placeholder="Password" formControlName="password" required>
                     <mat-error *ngIf="isFieldInvalid('userName')">
-                        Please inform your password
+                        El campo password es requerido
                     </mat-error>
                 </mat-form-field>
-                <button mat-raised-button color="primary">Login</button>
+                <button mat-raised-button color="primary">INICIAR SESIÓN</button>
             </form>
         </mat-card-content>
     </mat-card>

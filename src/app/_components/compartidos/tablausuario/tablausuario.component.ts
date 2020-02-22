@@ -66,7 +66,7 @@ export class TablausuarioComponent implements OnInit, AfterViewInit {
           .deleteUsuario(usuarioBorrar.id.toString())
           .subscribe(respuesta => {
             this.obtenerUsuarios();
-            Swal.fire('Borrar Registro', 'Registro Borrado con éxito !', 'success');
+            Swal.fire(respuesta.mensaje.titulo, respuesta.mensaje.contenido, 'success');
           }, error => { console.log(error); });
       }
     });
