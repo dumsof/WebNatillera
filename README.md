@@ -36,4 +36,11 @@ ng g component _components/usuarios/editarusuario --module=app.module.ts
 #poder publicar la aplicacion en produccion
 ng build --prod
 
+#como instalar flex layout
+npm i -s @angular/flex-layout
 
+#version de flex layout para angular 8
+npm i @angular/flex-layout@8.0.0-beta.27
+
+#ruta instalar angular
+https://www.youtube.com/watch?v=e74QOemhP6E

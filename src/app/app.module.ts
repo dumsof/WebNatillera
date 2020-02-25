@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 //en el archivo index dentro de la carpeta componente se agrupa todos los componentes
 import { AlertComponent, LoaderComponent, UsuarioComponent, NuevousuarioComponent, EditarusuarioComponent } from '@/_components';
 import { ModalComponent, TablausuarioComponent } from '@/_components/compartidos';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -46,7 +47,8 @@ import { ModalComponent, TablausuarioComponent } from '@/_components/compartidos
     BrowserAnimationsModule,
     MaterialModule,
     RoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule
   ],
   //poder utilizar el componente desde cualquier parte
   entryComponents: [ModalComponent],
