@@ -44,3 +44,15 @@ npm i @angular/flex-layout@8.0.0-beta.27
 
 #ruta instalar angular
 https://www.youtube.com/watch?v=e74QOemhP6E
+
+#INSTALACION ANGULAR
+instalar la ultima versión de npm con el fin de optener los ultimos paquetes.
+1. npm install npm@latest
+forzar a quitar los paquete que estan en cache.
+2. npm cache clean --force
+quitar la auditoria para que no presente error
+3. npm set audit false
+quitar la version anterior de angular cli
+4. npm uninstall -g angular-cli y npm uninstall -g @angular/cli
+instalar la version de angular cli
+5. npm install -g @angular/cli
